@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- saved from url=(0164)https://tpc.googlesyndication.com/sadbundle/$csp%3Der3$/15398908280546980406/UI_math_v3_final.html#t=8399066165726626388&p=https%3A%2F%2Fgoogleads.g.doubleclick.net -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./f(13).txt" type="text/javascript"></script><script src="./f(14).txt" type="text/javascript"></script><meta content="Adobe_Animate_CC" name="authoring-tool"><title>UI_math_v3_final</title><script src="./createjs-2015.11.26.min.js.下載"></script><meta content="width=300,height=250" name="ad.size"><script src="./UI_math_v3_final.js.下載"></script><script>
+var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+function init() {
+	canvas = document.getElementById("canvas");
+	anim_container = document.getElementById("animation_container");
+	dom_overlay_container = document.getElementById("dom_overlay_container");
+	var comp=AdobeAn.getComposition("01D5FB1F65E643B790700D14B18F5631");
+	var lib=comp.getLibrary();
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
+	var lib=comp.getLibrary();
+	loader.loadManifest(lib.properties.manifest);
+}
+function handleFileLoad(evt, comp) {
+	var images=comp.getImages();	
+	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
+}
+function handleComplete(evt,comp) {
+	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+	var lib=comp.getLibrary();
+	var ss=comp.getSpriteSheet();
+	var queue = evt.target;
+	var ssMetadata = lib.ssMetadata;
+	for(i=0; i<ssMetadata.length; i++) {
+		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+	}
+	exportRoot = new lib.UI_math_v3_final();
+	stage = new lib.Stage(canvas);	
+	//Registers the "tick" event listener.
+	fnStartAnimation = function() {
+		stage.addChild(exportRoot);
+		createjs.Ticker.setFPS(lib.properties.fps);
+		createjs.Ticker.addEventListener("tick", stage);
+	}	    
+	//Code to support hidpi screens and responsive scaling.
+	AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
+	AdobeAn.compositionLoaded(lib.properties.id);
+	fnStartAnimation();
+}
+</script><script type="text/javascript" src="./521PoRGnh7h8BVOMyCpHrhejufpyvF5vdQBdJpCoVT0.js.下載"></script></head><body onclick="ExitApi.exit();" onload="init();" style="margin:0px;; cursor:pointer">
+
+
+
+
+
+
+
+
+
+
+
+
+	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:300px; height:250px">
+		<canvas height="250" id="canvas" style="position: absolute; display: block; background-color: rgb(255, 255, 255); width: 300px; height: 250px;" width="300"></canvas>
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:300px; height:250px; position: absolute; left: 0px; top: 0px; display: block;">
+		</div>
+	</div>
+
+</body></html>
